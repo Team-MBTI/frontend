@@ -1,11 +1,11 @@
-import TestButton from '@/components/TestButton';
+import Button from '@/components/common/Button';
 
 import LoadingSpinner from '@/components/common/LoadingSpinner';
 
 const TestPage = () => {
   return (
     <section>
-      <TestButton />
+      <Button>Button!!</Button>
       <LoadingSpinner />
     </section>
   );
