@@ -8,6 +8,8 @@
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "types": ["jest", "@testing-library/react", "@testing-library/jest-dom"],
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -24,6 +26,6 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }
