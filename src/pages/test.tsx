@@ -13,9 +13,7 @@ interface MovieProp {
 }
 
 const getMovies = async () => {
-  const response = await axios.get(
-    'http://www.omdbapi.com/?apikey=7035c60c&s=frozen'
-  );
+  const response = await axios.get(process.env.API_URL as string);
   return response.data;
 };
 
@@ -29,8 +27,6 @@ const TestPage = () => {
   if (isError) {
     return <div>Error occurred while fetching users.</div>;
   }
-
-  console.log(data.Search);
 
   return (
     <section>

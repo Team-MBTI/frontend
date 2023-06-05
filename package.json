@@ -15,9 +15,9 @@
     ]
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev && NODE_ENV=development next start",
+    "prod": "next build && NODE_ENV=production next start",
     "build": "next build",
-    "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepare": "husky install"
@@ -39,6 +39,7 @@
     "zustand": "^4.3.8"
   },
   "devDependencies": {
+    "dotenv": "^16.1.4",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",

@@ -1,7 +1,7 @@
 import { rest } from 'msw';
 
 export const GET_MOVIE_INFOS = rest.get(
-  'http://www.omdbapi.com/?apikey=7035c60c&s=frozen',
+  process.env.API_URL as string,
   (req, res, ctx) =>
     res(
       ctx.status(200),
