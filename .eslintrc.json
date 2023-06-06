@@ -7,29 +7,62 @@
   },
   "plugins": ["import", "@typescript-eslint"],
   "settings": {
+    "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
     "import/resolver": {
-      "typescript": {}
+      "typescript": {
+        "directory": "./tsconfig.json"
+      }
     }
   },
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".jsx", "ts", "tsx"] }
+    ],
+    "react/jsx-props-no-spreading": "off",
     "import/order": [
       "error",
       {
+        // import문들을 그룹핑
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
         // react 관련 import문들을 다른 외부 라이브러리들보다 더 위에 위치시켜주기
-        "pattern": "react*",
-        "group": "external",
-        "position": "before",
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "builtin",
+            "position": "before"
+          },
+          {
+            "pattern": "next",
+            "group": "builtin",
+            "position": "after"
+          },
+          {
+            "pattern": "@/**",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@*/**",
+            "group": "internal",
+            "position": "after"
+          }
+        ],
+        // 적용되지 않는 타입들을 예외처리하여 적용될 수 있도록해줌. 
+        "pathGroupsExcludedImportTypes": ["react", "next"],
         // 오름차순 정렬, 대소문자 구분 하지 않음
         "alphabetize": {
           "order": "asc",
           "caseInsensitive": true
         },
-        "groups": [
-          ["builtin", "external"],
-          ["internal", "parent", "sibling", "index"]
-        ],
         "newlines-between": "always"
       }
     ]
