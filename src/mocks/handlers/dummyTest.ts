@@ -1,7 +1,7 @@
 import { rest } from 'msw';
 
 export const GET_MOVIE_INFOS = rest.get(
-  process.env.API_URL as string,
+  `${process.env.API_URL}`,
   (req, res, ctx) =>
     res(
       ctx.status(200),
@@ -25,6 +25,6 @@ export const GET_MOVIE_INFOS = rest.get(
             imdbID: 'tt4520988',
           },
         ],
-      })
-    )
+      }),
+    ),
 );

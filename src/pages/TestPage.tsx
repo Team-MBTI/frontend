@@ -1,8 +1,10 @@
-import Button from '@/components/common/Button';
+import Image from 'next/image';
 
+import { getMovies } from '@/apis/testApi';
+import Button from '@/components/common/Button';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
+
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 
 interface MovieProp {
   Poster: string;
@@ -12,12 +14,7 @@ interface MovieProp {
   imdbID: string;
 }
 
-const getMovies = async () => {
-  const response = await axios.get(process.env.API_URL as string);
-  return response.data;
-};
-
-const TestPage = () => {
+function TestPage() {
   const { data, isLoading, isError } = useQuery(['movies'], getMovies);
 
   if (isLoading) {
@@ -32,16 +29,20 @@ const TestPage = () => {
     <section>
       <Button>Button!!</Button>
       {data &&
-        data.Search.map((movie: MovieProp) => {
-          return (
-            <div key={movie.imdbID}>
-              Poster: <img src={movie.Poster} alt="Poster iamge" />
-            </div>
-          );
-        })}
+        data.Search.map((movie: MovieProp) => (
+          <div key={movie.imdbID}>
+            Poster:
+            <Image
+              width={256}
+              height={256}
+              src={movie.Poster}
+              alt="Poster iamge"
+            />
+          </div>
+        ))}
       <LoadingSpinner />
     </section>
   );
-};
+}
 
 export default TestPage;
