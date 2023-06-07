@@ -1,13 +1,17 @@
 {
-  "extends": ["next", "next/core-web-vitals", "airbnb"],
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "airbnb",
+    "plugin:jest/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "env": {
     "browser": true,
     "node": true
   },
-  "plugins": ["import", "@typescript-eslint"],
+  "plugins": ["import", "@typescript-eslint", "jest"],
   "settings": {
-    "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
     "import/resolver": {
       "typescript": {
         "directory": "./tsconfig.json"
@@ -56,7 +60,7 @@
             "position": "after"
           }
         ],
-        // 적용되지 않는 타입들을 예외처리하여 적용될 수 있도록해줌. 
+        // 적용되지 않는 타입들을 예외처리하여 적용될 수 있도록해줌.
         "pathGroupsExcludedImportTypes": ["react", "next"],
         // 오름차순 정렬, 대소문자 구분 하지 않음
         "alphabetize": {
@@ -65,6 +69,29 @@
         },
         "newlines-between": "always"
       }
-    ]
+    ],
+    "react/function-component-definition": [
+      // 함수형 컴포넌트 선언방식
+      2,
+      {
+        "namedComponents": ["function-declaration", "arrow-function"]
+      }
+    ],
+    "import/extensions": [
+      // 임포트시 확장자 적어주지 않기 위해
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "operator-linebreak": "off",
+    "import/prefer-default-export": "off", // export default 가 아닌 default 없이 export 할 수 있도록
+    "implicit-arrow-linebreak": "off",
+    "function-paren-newline": "off",
+    "import/no-unresolved": "off"
   }
 }

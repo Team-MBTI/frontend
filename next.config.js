@@ -1,3 +1,4 @@
+const dotenv = require('dotenv');
 const {
   PHASE_DEVELOPMENT_SERVER,
   PHASE_PRODUCTION_BUILD,
@@ -17,11 +18,14 @@ module.exports = (phase) => {
 
   const phaseConfig = envConfig[phase] || envConfig[PHASE_DEVELOPMENT_SERVER];
 
-  require('dotenv').config({ path: phaseConfig.envFile });
+  dotenv.config({ path: phaseConfig.envFile });
 
   return {
     env: {
       API_URL: process.env.API_URL,
+    },
+    images: {
+      domains: ['m.media-amazon.com'],
     },
   };
 };
