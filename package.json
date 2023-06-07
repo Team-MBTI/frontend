@@ -10,8 +10,7 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "prettier --write",
-      "yarn run lint:fix",
-      "git add"
+      "eslint --fix"
     ]
   },
   "scripts": {
@@ -23,7 +22,8 @@
     "test": "jest",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "storybook build",
-    "prepare": "husky install"
+    "lint-staged": "lint-staged",
+    "prepare": "rm -rf .husky && husky install && npx husky add .husky/pre-commit \"npm run lint-staged\""
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",

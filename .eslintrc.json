@@ -58,6 +58,16 @@
             "pattern": "@*/**",
             "group": "internal",
             "position": "after"
+          },
+          {
+            "pattern": "./*",
+            "group": "index",
+            "position": "after"
+          },
+          {
+            "pattern": "../*",
+            "group": "index",
+            "position": "after"
           }
         ],
         // 적용되지 않는 타입들을 예외처리하여 적용될 수 있도록해줌.
