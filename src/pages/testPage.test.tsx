@@ -1,4 +1,4 @@
-import { render, screen } from '@/tests/testing-library-utils';
+import { render, screen } from '@testing-library/react';
 
 import TestPage from './TestPage';
 

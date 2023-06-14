@@ -1,5 +1,8 @@
+import { ReactElement, ReactNode } from 'react';
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { render, RenderOptions } from '@testing-library/react';
+
 import '@testing-library/jest-dom';
 
 const queryClient = new QueryClient({
@@ -10,19 +13,13 @@ const queryClient = new QueryClient({
   },
 });
 
-const wrapper = ({ children }: { children: React.ReactNode }) => (
-  <>
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-  </>
+const wrapper = ({ children }: { children: ReactNode }) => (
+  <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 );
 
 export const renderWithProvider = (
-  ui: React.ReactElement,
-  options?: Omit<RenderOptions, 'queries'>
-) => {
-  return render(ui, { wrapper, ...options });
-};
-
-export * from '@testing-library/react';
+  ui: ReactElement,
+  options?: Omit<RenderOptions, 'queries'>,
+) => render(ui, { wrapper, ...options });
 
 export { renderWithProvider as render };
