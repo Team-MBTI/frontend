@@ -22,4 +22,6 @@ export const renderWithProvider = (
   options?: Omit<RenderOptions, 'queries'>,
 ) => render(ui, { wrapper, ...options });
 
+export * from '@testing-library/react';
+
 export { renderWithProvider as render };
