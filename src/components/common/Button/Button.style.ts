@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 
 export const Button = styled.button`
-  ${(props) => css`
+  ${() => css`
     padding: 8px 16px;
     background-color: #007bff;
     color: #fff;

@@ -26,6 +26,9 @@ yarn-error.log*
 
 # local env files
 .env*.local
+/src/env/.env.local
+/src/env/.env.dev
+/src/env/.env.prod
 
 # vercel
 .vercel
@@ -36,3 +39,5 @@ next-env.d.ts
 
 # husky
 .husky
+
+
