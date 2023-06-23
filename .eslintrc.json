@@ -102,6 +102,9 @@
     "import/prefer-default-export": "off", // export default 가 아닌 default 없이 export 할 수 있도록
     "implicit-arrow-linebreak": "off",
     "function-paren-newline": "off",
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "no-return-assign": "off",
+    "no-confusing-arrow": "off",
+    "arrow-body-style": "off"
   }
 }
