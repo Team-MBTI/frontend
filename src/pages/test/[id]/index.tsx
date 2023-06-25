@@ -24,6 +24,7 @@ const Section = styled.section`
   height: 100%;
   padding: 10px;
   overflow: hidden;
+  position: relative;
 `;
 
 const Question = styled.div<Props>`
@@ -61,20 +62,27 @@ const Card = styled.button<Props>`
   border-radius: 30px;
   border: 1px solid
     ${(props) => (props.isActive ? '#D9D8DC' : 'rgba(0,0,0,0.1)')};
-  transition: 0.5s;
 
-  &:hover {
-    border: ${(props) =>
-    props.isActive ? '2px solid #5344AA;' : '1px solid rgba(0,0,0,0.1)'};
-  }
-
-  & p {
+  & > p {
     color: ${(props) => (props.isActive ? '#232323' : 'rgba(0,0,0,0.1)')};
   }
 
-  &:hover p {
-    font-weight: bold;
-    color: ${(props) => (props.isActive ? '#5344AA;' : 'rgba(0,0,0,0.1)')};
+  &:focus {
+    animation: blink 1s 1;
+  }
+
+  @keyframes blink {
+    0%,
+    20%,
+    60%,
+    100% {
+      border: 2px solid #5344aa;
+    }
+
+    10%,
+    30% {
+      border: 2px solid #d9d8dc;
+    }
   }
 `;
 
@@ -85,6 +93,14 @@ const ResultButton = styled.button`
   margin: auto;
   border-radius: 15px;
   background-color: #5344aa;
+`;
+
+const PreviousArea = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20vh;
 `;
 
 interface IMbtiTest {
@@ -189,7 +205,10 @@ function Index() {
                   onClick={() => {
                     if (currentStep - 1 === index) {
                       moveToNextQuestion(index);
-                    } else if (currentStep === index) {
+                    }
+                  }}
+                  onAnimationEnd={() => {
+                    if (currentStep === index) {
                       moveToNextQuestion(index + 1);
                     }
                   }}
@@ -202,6 +221,13 @@ function Index() {
         ))}
         <ResultButton>결과 확인 하기</ResultButton>
         <ProgressBar currentStep={currentStep} />
+        {currentStep > 0 && (
+          <PreviousArea
+            onClick={() => {
+              moveToNextQuestion(currentStep - 1);
+            }}
+          />
+        )}
       </Section>
     </Layout>
   );
