@@ -1,11 +1,11 @@
+import { ReactNode } from 'react';
+
 import * as S from './Button.style';
 
 interface ButtonProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-const Button = ({ children }: ButtonProps) => {
-  return <S.Button>{children}</S.Button>;
-};
+const Button = ({ children }: ButtonProps) => <S.Button>{children}</S.Button>;
 
 export default Button;

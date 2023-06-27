@@ -106,6 +106,7 @@
     "no-return-assign": "off",
     "no-confusing-arrow": "off",
     "arrow-body-style": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "import/no-extraneous-dependencies": "off"
   }
 }

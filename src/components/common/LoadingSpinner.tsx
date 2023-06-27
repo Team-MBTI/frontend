@@ -1,5 +1,3 @@
-const LoadingSpinner = () => {
-  return <div>LoadingSpinner....</div>;
-};
+const LoadingSpinner = () => <div>LoadingSpinner....</div>;
 
 export default LoadingSpinner;
