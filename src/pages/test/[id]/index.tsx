@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import ProgressBar from '@/components/common/ProgressBar';
+import { useToastMessage } from '@/store/GlobalStore';
 
 import styled from '@emotion/styled';
 
@@ -165,6 +166,7 @@ const mbtiTest: IMbtiTest[] = [
 function Index() {
   const questionRef = useRef<(HTMLDivElement | null)[]>([]);
   const [currentStep, setCurrentStep] = useState<number>(0);
+  const setToastMessage = useToastMessage((state) => state.setToastMessage);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -219,7 +221,6 @@ function Index() {
             </div>
           </Question>
         ))}
-        <ResultButton>결과 확인 하기</ResultButton>
         <ProgressBar currentStep={currentStep} />
         {currentStep > 0 && (
           <PreviousArea
@@ -228,6 +229,15 @@ function Index() {
             }}
           />
         )}
+        <ResultButton
+          onClick={() =>
+            setToastMessage({
+              message: '거의 다 왔어요!',
+              type: 'success',
+            })}
+        >
+          결과 확인 하기
+        </ResultButton>
       </Section>
     </Layout>
   );

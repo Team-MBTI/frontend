@@ -105,6 +105,7 @@
     "import/no-unresolved": "off",
     "no-return-assign": "off",
     "no-confusing-arrow": "off",
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "no-unused-vars": "off"
   }
 }
