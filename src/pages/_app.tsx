@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 
 import { AppProps } from 'next/app';
 
+import Layout from '@/components/common/Layout';
 import { server } from '@/mocks/browsers/testServer';
 import GlobalStore from '@/store/GlobalStore';
 import QueryProvider from '@/utils/QueryProvider';
@@ -29,7 +30,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <QueryProvider>
       <ThemeProvider theme={{ mode: theme }}>
         <Global styles={{}} />
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </QueryProvider>
   );
