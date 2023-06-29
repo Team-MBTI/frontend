@@ -4,10 +4,10 @@ import Image from 'next/image';
 
 import { useToastMessage } from '@/store/GlobalStore';
 
-import { ToastContainer } from './ToastMessage.style';
+import * as S from './ToastMessage.style';
 
 const ToastMessage = () => {
-  const { message, type } = useToastMessage((state) => state.message);
+  const { message, type } = useToastMessage((state) => state.toast);
   const setToastMessage = useToastMessage((state) => state.setToastMessage);
   const [showMessage, setShowMessage] = useState<boolean>(false);
 
@@ -27,14 +27,14 @@ const ToastMessage = () => {
   if (!showMessage) return null;
 
   return (
-    <ToastContainer>
+    <S.ToastContainer>
       <div>
         {type === 'success' && (
           <Image width={22} height={22} src="/svg/check.svg" alt="check" />
         )}
         <span>{message}</span>
       </div>
-    </ToastContainer>
+    </S.ToastContainer>
   );
 };
 

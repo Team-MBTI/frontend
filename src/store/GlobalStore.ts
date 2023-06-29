@@ -19,14 +19,14 @@ type ToastMessage = {
 };
 
 interface IToastMessage {
-  message: ToastMessage;
+  toast: ToastMessage;
   setToastMessage: (message: ToastMessage) => void;
 }
 
 export const useToastMessage = create<IToastMessage>((set) => ({
-  message: {
+  toast: {
     message: undefined,
     type: 'success',
   },
-  setToastMessage: (message) => set(() => ({ message })),
+  setToastMessage: (toast) => set(() => ({ toast })),
 }));
