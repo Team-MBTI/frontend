@@ -104,6 +104,7 @@
     "function-paren-newline": "off",
     "import/no-unresolved": "off",
     "import/no-extraneous-dependencies": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }]
   }
 }

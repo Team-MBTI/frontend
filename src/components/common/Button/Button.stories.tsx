@@ -75,3 +75,27 @@ export const PopupButton = () => (
     </Button>
   </div>
 );
+
+LargeButton.parameters = {
+  docs: {
+    description: {
+      story:
+        '`Large` 타입 버튼은 로그인 & 회원가입 에서 주로 사용되어지는 타입 입니다.  (로그인 또는 회원가입, 로그인 없이 시작하기, 공유하기)',
+    },
+  },
+  controls: {
+    disabled: true,
+  },
+};
+
+PopupButton.parameters = {
+  docs: {
+    description: {
+      story:
+        '`Popup` 타입 버튼은 로그인 & 회원가입 에서 주로 사용되어지는 타입 입니다.  (로그인 또는 회원가입, 로그인 없이 시작하기, 공유하기)',
+    },
+  },
+  controls: {
+    disabled: true,
+  },
+};

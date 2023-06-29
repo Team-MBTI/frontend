@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 
 import { flexbox } from '@/styles/mixin';
 
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 type ButtonSizeType = 'large' | 'big' | 'normal' | 'small';
@@ -18,10 +17,10 @@ export interface ButtonProps {
 }
 
 const padding: Record<ButtonSizeType, string> = {
-  large: '0 16px',
-  big: '0 16px',
-  normal: '0 12px',
-  small: '0 12px',
+  large: '0 16',
+  big: '0 16',
+  normal: '0 12',
+  small: '0 12',
 };
 
 const height: Record<ButtonSizeType, number> = {
@@ -61,18 +60,20 @@ export const Button = styled(ButtonBase)<ButtonProps>`
   height: ${({ size }) => height[size]}px;
   border-radius: 13px;
 
-  ${() => css`
-    &.reject {
-      border: 1px solid #ff5757;
+  ${({ design }) =>
+    design === 'reject' &&
+    `
+    border: 1px solid #ff5757;
+    color: #ff5757;
+
+    &:hover {
+      background: #ffe5e5;
+    }
+
+    &:disabled,
+    &.disabled {
+      background: #ffe5e5;
       color: #ff5757;
     }
-    &.reject:hover {
-      background: ##FFE5E5
-    }
-    &.reject:disabled,
-    &.reject.disabled {
-      background: ##FFE5E5
-      color: #ff5757;
-    }
-  `};
+  `}
 `;
