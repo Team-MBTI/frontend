@@ -1,108 +1,21 @@
-import { useEffect, useRef, useState } from 'react';
+import { RefObject, useRef } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
 
 import ProgressBar from '@/components/common/ProgressBar';
+import * as S from '@/components/test/index.style';
+import { useMbtiTest } from '@/hooks/useMBTITest';
 import { useToastMessage } from '@/store/GlobalStore';
 import theme from '@/styles/theme';
 
 import styled from '@emotion/styled';
-
-interface Props {
-  isActive?: boolean;
-}
 
 const Layout = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
-`;
-
-const Section = styled.section`
-  max-width: 390px;
-  width: 100%;
-  height: 100%;
-  padding: 10px;
-  overflow: hidden;
-  position: relative;
-`;
-
-const Question = styled.div<Props>`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 20vh;
-  margin-bottom: 20vh;
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
-
-  & > p {
-    text-align: center;
-    color: ${(props) => (props.isActive ? 'black' : 'rgba(0,0,0,0.1)')};
-  }
-
-  & > div {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-  }
-`;
-
-const Card = styled.button<Props>`
-  width: 164px;
-  height: 123px;
-  padding: 10px;
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  border-radius: 30px;
-  border: 1px solid
-    ${(props) => (props.isActive ? '#D9D8DC' : 'rgba(0,0,0,0.1)')};
-
-  & > p {
-    color: ${(props) => (props.isActive ? '#232323' : 'rgba(0,0,0,0.1)')};
-  }
-
-  &:focus {
-    animation: blink 1s 1;
-  }
-
-  @keyframes blink {
-    0%,
-    20%,
-    60%,
-    100% {
-      border: 2px solid #5344aa;
-    }
-
-    10%,
-    30% {
-      border: 2px solid #d9d8dc;
-    }
-  }
-`;
-
-const ResultButton = styled.button`
-  color: white;
-  width: 100%;
-  height: 40px;
-  margin: auto;
-  border-radius: 15px;
-  background-color: #5344aa;
-`;
-
-const PreviousArea = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 20vh;
 `;
 
 interface IMbtiTest {
@@ -165,25 +78,13 @@ const mbtiTest: IMbtiTest[] = [
 ];
 
 function Index() {
-  const questionRef = useRef<(HTMLDivElement | null)[]>([]);
-  const [currentStep, setCurrentStep] = useState<number>(0);
+  const questionRef: RefObject<HTMLDivElement[]> = useRef([]);
+  const { currentStep, moveToNextQuestion } = useMbtiTest(questionRef);
   const setToastMessage = useToastMessage((state) => state.setToastMessage);
-
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-  }, []);
-
-  const moveToNextQuestion = (index: number) => {
-    questionRef.current[index]?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center',
-    });
-    setCurrentStep(index);
-  };
 
   return (
     <Layout>
-      <Section>
+      <S.Section>
         <Link href="/">
           <Image
             priority
@@ -194,15 +95,19 @@ function Index() {
           />
         </Link>
         {mbtiTest.map((test, index) => (
-          <Question
+          <S.Question
             key={test.question}
             isActive={currentStep === index}
-            ref={(element) => (questionRef.current[index] = element)}
+            ref={(element: HTMLDivElement | null) => {
+              if (element && questionRef.current) {
+                questionRef.current[index] = element;
+              }
+            }}
           >
             <p>{test.question}</p>
             <div>
               {test.answer.map((answer) => (
-                <Card
+                <S.Card
                   isActive={currentStep === index}
                   key={test.question + answer}
                   type="button"
@@ -218,20 +123,20 @@ function Index() {
                   }}
                 >
                   <p>선택지에 대한 설명</p>
-                </Card>
+                </S.Card>
               ))}
             </div>
-          </Question>
+          </S.Question>
         ))}
         <ProgressBar currentStep={currentStep} color={theme.color.primary} />
         {currentStep > 0 && (
-          <PreviousArea
+          <S.PreviousArea
             onClick={() => {
               moveToNextQuestion(currentStep - 1);
             }}
           />
         )}
-        <ResultButton
+        <S.ResultButton
           onClick={() =>
             setToastMessage({
               message: '거의 다 왔어요!',
@@ -239,8 +144,8 @@ function Index() {
             })}
         >
           결과 확인 하기
-        </ResultButton>
-      </Section>
+        </S.ResultButton>
+      </S.Section>
     </Layout>
   );
 }
