@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 import ProgressBar from '@/components/common/ProgressBar';
 import { useToastMessage } from '@/store/GlobalStore';
+import theme from '@/styles/theme';
 
 import styled from '@emotion/styled';
 
@@ -194,6 +195,7 @@ function Index() {
         </Link>
         {mbtiTest.map((test, index) => (
           <Question
+            key={test.question}
             isActive={currentStep === index}
             ref={(element) => (questionRef.current[index] = element)}
           >
@@ -221,7 +223,7 @@ function Index() {
             </div>
           </Question>
         ))}
-        <ProgressBar currentStep={currentStep} />
+        <ProgressBar currentStep={currentStep} color={theme.color.primary} />
         {currentStep > 0 && (
           <PreviousArea
             onClick={() => {
