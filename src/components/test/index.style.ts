@@ -1,4 +1,5 @@
 import { flexbox } from '@/styles/mixin';
+import theme from '@/styles/theme';
 
 import styled from '@emotion/styled';
 
@@ -18,8 +19,7 @@ export const Section = styled.section`
 export const Question = styled.div<Props>`
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  ${flexbox({ dir: 'column' })}
   gap: 10px;
   margin-top: 20vh;
   margin-bottom: 20vh;
@@ -60,7 +60,7 @@ export const Card = styled.button<Props>`
     20%,
     60%,
     100% {
-      border: 2px solid #5344aa;
+      border: 2px solid ${theme.color.primary};
     }
 
     10%,
