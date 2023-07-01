@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 
 import { AppProps } from 'next/app';
 
+import Layout from '@/components/common/Layout';
 import ToastMessage from '@/components/common/ToastMessage';
 import { server } from '@/mocks/browsers/testServer';
 import { GlobalStore } from '@/store/GlobalStore';
@@ -31,7 +32,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={{ mode: theme }}>
         <ToastMessage />
         <Global styles={{}} />
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </QueryProvider>
   );
