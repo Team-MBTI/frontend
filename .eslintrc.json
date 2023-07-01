@@ -103,10 +103,12 @@
     "implicit-arrow-linebreak": "off",
     "function-paren-newline": "off",
     "import/no-unresolved": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react/require-default-props": "off",
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }],
     "no-return-assign": "off",
     "no-confusing-arrow": "off",
     "arrow-body-style": "off",
     "no-unused-vars": "off",
-    "import/no-extraneous-dependencies": "off"
   }
 }
