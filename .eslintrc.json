@@ -103,6 +103,8 @@
     "implicit-arrow-linebreak": "off",
     "function-paren-newline": "off",
     "import/no-unresolved": "off",
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "react/require-default-props": "off",
+    "no-unused-vars": "off"
   }
 }

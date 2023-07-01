@@ -58,8 +58,32 @@ const Template: ComponentStory<typeof Input> = () => (
     type="text"
     name="email"
     status="normal"
-    value="jinlog9@gmail.com"
+    value=""
   />
 );
 
 export const Default = Template.bind({});
+
+export const SuccessInput = () => (
+  <Input
+    width="300px"
+    label="이메일"
+    placeholder="이메일을 입력해주세요."
+    type="text"
+    name="email"
+    status="success"
+    value="jinlog9@gmail.com"
+  />
+);
+
+export const ErrorInput = () => (
+  <Input
+    width="300px"
+    label="이메일"
+    placeholder="이메일을 입력해주세요."
+    type="text"
+    name="email"
+    status="error"
+    value="jinlog9#gmail.com"
+  />
+);

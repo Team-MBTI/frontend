@@ -115,13 +115,7 @@ export const Input = styled.input<IInput>`
     'padding-right: 32px'};
 
   &::placeholder {
-    color: ${({ status }) => (status === 'focus' ? 'gray' : '#ffffff00')};
-    color: ${({ label }) => !label && 'gray'};
-  }
-
-  &:focus {
-    outline: none;
-    border-color: ${({ status }) => status !== 'error' && '#5344AA'};
+    color: '#ffffff00';
   }
 
   ${({ status }) => createStyleByStatus(status)}
