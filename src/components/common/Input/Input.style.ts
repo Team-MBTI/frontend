@@ -13,19 +13,19 @@ export const InputWrapper = styled.div`
 const createStyleByStatus = (status?: TextFieldStatus): SerializedStyles => {
   switch (status) {
     case 'normal':
-      return css``;
+      return css`
+        color: #888888;
+      `;
     case 'error':
       return css`
-        text-decoration-color: #fb625b;
+        color: #fb625b;
       `;
-    case 'focus':
-      return css``;
     case 'success':
-      return css``;
+      return css`
+        color: #36bd7c;
+      `;
     case 'disabled':
       return css`
-        padding-top: 14px;
-        background-color: '#eff2f7';
         color: '#b0bbcd';
       `;
     default:
@@ -117,6 +117,4 @@ export const Input = styled.input<IInput>`
   &::placeholder {
     color: '#ffffff00';
   }
-
-  ${({ status }) => createStyleByStatus(status)}
 `;
