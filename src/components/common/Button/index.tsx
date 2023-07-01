@@ -1,11 +1,22 @@
-import { ReactNode } from 'react';
-
 import * as S from './Button.style';
 
-interface ButtonProps {
-  children: ReactNode;
-}
-
-const Button = ({ children }: ButtonProps) => <S.Button>{children}</S.Button>;
+const Button = ({
+  children,
+  width,
+  design,
+  size,
+  backgroundColor,
+  color,
+}: S.ButtonProps) => (
+  <S.Button
+    width={width}
+    design={design}
+    size={size}
+    backgroundColor={backgroundColor}
+    color={color}
+  >
+    {children}
+  </S.Button>
+);
 
 export default Button;
