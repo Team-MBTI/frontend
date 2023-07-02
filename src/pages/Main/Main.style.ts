@@ -41,3 +41,5 @@ export const BottomWrapper = styled.div`
   margin-top: 120px;
   gap: 16px;
 `;
+
+export default function MainStyle() {}
