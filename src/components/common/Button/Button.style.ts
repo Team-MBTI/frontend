@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { CSSProperties, ReactNode } from 'react';
 
 import { flexbox } from '@/styles/mixin';
 
@@ -7,7 +7,7 @@ import styled from '@emotion/styled';
 type ButtonSizeType = 'large' | 'big' | 'normal' | 'small';
 type DesignType = 'solid' | 'ghost' | 'outline' | 'reject';
 
-export interface ButtonProps {
+export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   children?: ReactNode;
   design?: DesignType;
   width: number;
