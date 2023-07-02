@@ -11,7 +11,7 @@ export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   type: string;
   name: string;
   status: InputStatus;
-  value: string;
+  value?: string;
   icon?: string;
   iconPosition?: TextFieldIconPosition;
 }
