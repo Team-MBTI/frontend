@@ -38,3 +38,5 @@ export const SignUpButton = styled.div`
   border-bottom: 1px solid #000;
   cursor: pointer;
 `;
+
+export default function Login() {}
