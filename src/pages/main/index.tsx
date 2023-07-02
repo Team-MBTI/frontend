@@ -39,7 +39,7 @@ export default function Main() {
           width={333}
           size="large"
           backgroundColor="#fff"
-          color="##585858"
+          color="#585858"
           css={css`
             border: 1px solid black;
           `}
