@@ -14,7 +14,7 @@ const createStyleByStatus = (status?: TextFieldStatus): SerializedStyles => {
   switch (status) {
     case 'normal':
       return css`
-        color: #888888;
+        color: #8d94a0;
       `;
     case 'error':
       return css`
@@ -40,7 +40,7 @@ const calculatedStatusColor = (status?: TextFieldStatus): string => {
     case 'error':
       return '#FF8970';
     default:
-      return '#888888';
+      return '#f2f4f6';
   }
 };
 
