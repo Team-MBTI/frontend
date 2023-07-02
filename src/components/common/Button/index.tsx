@@ -7,6 +7,8 @@ const Button = ({
   size,
   backgroundColor,
   color,
+  onClick,
+  className,
 }: S.ButtonProps) => (
   <S.Button
     width={width}
@@ -14,6 +16,8 @@ const Button = ({
     size={size}
     backgroundColor={backgroundColor}
     color={color}
+    onClick={onClick}
+    className={className}
   >
     {children}
   </S.Button>
