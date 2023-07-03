@@ -49,6 +49,24 @@ export default function Login() {
     return 'success';
   };
 
+  const kakaoInit = () => {
+    const kakao = (window as any).Kakao;
+
+    if (!kakao.isInitialized()) {
+      kakao.init(process.env.KAKAO_SHARE_KEY);
+    }
+
+    return kakao;
+  };
+
+  const kakaoLogin = () => {
+    const kakao = kakaoInit();
+
+    kakao.Auth.authorize({
+      redirectUri: `${process.env.API_URL}/auth/kakao/callback`,
+    });
+  };
+
   return (
     <S.LoginWrapper>
       <S.Title>로그인</S.Title>
@@ -112,6 +130,7 @@ export default function Login() {
             font-size: 18px;
             font-weight: 600;
           `}
+          onClick={kakaoLogin}
         >
           <Image
             priority
@@ -123,9 +142,7 @@ export default function Login() {
           카카오 로그인
         </Button>
 
-        <S.SignUpButton onClick={() => router.push('/signup')}>
-          회원 가입
-        </S.SignUpButton>
+        <S.SignUpButton onClick={kakaoLogin}>회원 가입</S.SignUpButton>
       </S.BottomWrapper>
     </S.LoginWrapper>
   );
