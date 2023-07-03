@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 type onCopyFn = (text: string) => Promise<boolean>;
 
-function useCopyClipBoard(): [boolean, onCopyFn] {
+export function useCopyClipBoard(): [boolean, onCopyFn] {
   const [isCopy, setIsCopy] = useState<boolean>(false);
 
   const onCopy = async (text: string) => {
@@ -21,5 +21,3 @@ function useCopyClipBoard(): [boolean, onCopyFn] {
 
   return [isCopy, onCopy];
 }
-
-export default useCopyClipBoard;
