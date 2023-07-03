@@ -1,9 +1,6 @@
-import {
-  RefObject, useEffect, useRef, useState,
-} from 'react';
+import { RefObject, useEffect, useState } from 'react';
 
 interface IUseMbtiTest {
-  // questionRef: RefObject<(HTMLDivElement | null)[]>;
   currentStep: number;
   moveToNextQuestion: (index: number) => void;
 }
