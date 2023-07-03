@@ -1,7 +1,8 @@
-import React, { CSSProperties, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 import { flexbox } from '@/styles/mixin';
 
+import { SerializedStyles } from '@emotion/react';
 import styled from '@emotion/styled';
 
 type ButtonSizeType = 'large' | 'big' | 'normal' | 'small';
@@ -14,6 +15,7 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   size: ButtonSizeType;
   backgroundColor?: string;
   color?: string;
+  css?: SerializedStyles;
 }
 
 const padding: Record<ButtonSizeType, string> = {
