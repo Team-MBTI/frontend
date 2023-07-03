@@ -1,48 +1,62 @@
-import { ThemeModalBox, ThemeModalContainer, ThemeModalItemContainer, ThemeModalItem, ThemeModalContent, ThemeCloseBtn } from './ThemeModal.style'
-import useCopyClipBoard from "@/hooks/useCopyClipBoard"
+import React from 'react';
 
-import { useRouter } from "next/router";
-import Image from 'next/image'
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
-const ThemeModal = (props: any) => {
-    const { ClickModal } = props
+import useCopyClipBoard from '@/hooks/useCopyClipBoard';
 
-    const [isCopy, onCopy] = useCopyClipBoard();
+import {
+  ThemeModalBox,
+  ThemeModalContainer,
+  ThemeModalItemContainer,
+  ThemeModalItem,
+  ThemeModalContent,
+  ThemeCloseBtn,
+} from './ThemeModal.style';
 
-    const handleCopyClipBoard = (text: string) => {
-        onCopy(text);
-    };
+type IThemeModal = {
+  clickModal: React.MouseEventHandler<HTMLDivElement>;
+};
 
-    //공유하기 버튼
-    
-    const router = useRouter();
-    const url = 'http://localhost:3000' + router.pathname
+const ThemeModal = (props: IThemeModal) => {
+  const { clickModal } = props;
 
-    return (
-        <ThemeModalBox onClick={ClickModal}>
-            <ThemeModalContainer>
-                <ThemeCloseBtn onClick={ClickModal}>X</ThemeCloseBtn>
-                <ThemeModalContent>
-                    <ThemeModalItem>공유방식을 선택해주세요</ThemeModalItem>
-                    <ThemeModalItemContainer>
-                        <Image 
-                            src="/img/kakaoCopy.png" 
-                            alt='CopyImage' 
-                            width={50}
-                            height={70} />
-                        <Image
-                            onClick={() => handleCopyClipBoard(url)}
-                            src="/img/linkCopy.png"
-                            alt='CopyImage'  
-                            width={50}
-                            height={70} />
-                            { isCopy && ClickModal }
+  const [isCopy, onCopy] = useCopyClipBoard();
 
-                    </ThemeModalItemContainer>
-                </ThemeModalContent>
-            </ThemeModalContainer>
-        </ThemeModalBox>
-    )
-}
+  const handleCopyClipBoard = (text: string) => {
+    onCopy(text);
+  };
 
-export default ThemeModal
+  // 공유하기 버튼
+
+  const router = useRouter();
+  const url = process.env.API_URL + router.pathname;
+
+  return (
+    <ThemeModalBox onClick={clickModal}>
+      <ThemeModalContainer>
+        <ThemeCloseBtn onClick={clickModal}>X</ThemeCloseBtn>
+        <ThemeModalContent>
+          <ThemeModalItem>공유방식을 선택해주세요</ThemeModalItem>
+          <ThemeModalItemContainer>
+            <Image
+              src="/img/kakaoCopy.png"
+              alt="CopyImage"
+              width={50}
+              height={70}
+            />
+            <Image
+              onClick={() => handleCopyClipBoard(url)}
+              src="/img/linkCopy.png"
+              alt="CopyImage"
+              width={50}
+              height={70}
+            />
+          </ThemeModalItemContainer>
+        </ThemeModalContent>
+      </ThemeModalContainer>
+    </ThemeModalBox>
+  );
+};
+
+export default ThemeModal;
