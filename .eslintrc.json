@@ -89,7 +89,6 @@
     ],
     "import/extensions": [
       // 임포트시 확장자 적어주지 않기 위해
-      "error",
       "ignorePackages",
       {
         "js": "never",
