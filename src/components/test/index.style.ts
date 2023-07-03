@@ -11,7 +11,6 @@ export const Section = styled.section`
   max-width: 390px;
   width: 100%;
   height: 100%;
-  padding: 10px;
   overflow: hidden;
   position: relative;
 `;
@@ -52,7 +51,7 @@ export const Card = styled.button<Props>`
   }
 
   &:focus {
-    animation: blink 1s 1;
+    animation: ${(props) => (props.isActive ? 'blink 1s 1' : '')};
   }
 
   @keyframes blink {
@@ -75,6 +74,7 @@ export const ResultButton = styled.button`
   width: 100%;
   height: 40px;
   margin: auto;
+  margin-bottom: 20px;
   border-radius: 15px;
   background-color: #5344aa;
 `;
@@ -82,6 +82,14 @@ export const ResultButton = styled.button`
 export const PreviousArea = styled.div`
   position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
+  height: 20vh;
+`;
+
+export const NextArea = styled.div`
+  position: fixed;
+  bottom: 0;
   left: 0;
   width: 100%;
   height: 20vh;
