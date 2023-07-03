@@ -1,23 +1,24 @@
 import { flexbox } from '@/styles/mixin';
 
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const Container = styled.div`
+  ${flexbox({ dir: 'column', jc: 'center', ai: 'center' })}
+
   width: 100vw;
   height: 100vh;
   padding: 0 21px;
-  
-  ${flexbox({ dir: 'column', jc: 'center', ai: 'center' })}
 `;
 
 export const ResultWrapper = styled.div`
+  ${flexbox({ dir: 'column', jc: 'space-around', ai: 'center' })}
+
   width: 100%;
   height: 60%;
-
   padding: 10px 21px;
+
   background-color: white;
   border-radius: 15px;
-  ${flexbox({ dir: 'column', jc: 'space-around', ai: 'center' })}
 `;
 
 export const ImageWrapper = styled.div`
@@ -27,7 +28,7 @@ export const ImageWrapper = styled.div`
   border: 1px solid red;
   border-radius: 15px;
 `;
-  
+
 export const TitleText = styled.div`
   font-size: 18px;
   padding: 10px 0px;
@@ -36,16 +37,16 @@ export const TitleText = styled.div`
 
 export const SubText = styled.div`
   font-size: 24px;
-  color: #5344AA;
+  color: #5344aa;
   padding: 10px 0px;
 `;
 
 export const ButtonWrapper = styled.div`
+  ${flexbox({ dir: 'column', jc: 'space-around', ai: 'center' })}
+
   width: 100%;
   height: 30%;
-
-  margin:20px;
-  ${flexbox({ dir: 'column', jc: 'space-around', ai: 'center' })}
+  margin: 20px;
 `;
 
 export const MoreInfoButton = styled.button`
@@ -53,7 +54,7 @@ export const MoreInfoButton = styled.button`
   height: 64px;
 
   color: white;
-  background-color: #5344AA;
+  background-color: #5344aa;
 
   border-radius: 15px;
 

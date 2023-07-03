@@ -1,9 +1,6 @@
 const calcRem = (size: number): string => `${size / 16}rem`;
 
-const color = {
-  primary: '#5344AA',
-  secondary: '#E14D6C'
-};
+const color = {};
 
 const fontSize = {
   xs: calcRem(12),
