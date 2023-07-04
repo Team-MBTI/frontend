@@ -89,7 +89,7 @@
     ],
     "import/extensions": [
       // 임포트시 확장자 적어주지 않기 위해
-      "error",
+      "warn",
       "ignorePackages",
       {
         "js": "never",
@@ -103,6 +103,14 @@
     "implicit-arrow-linebreak": "off",
     "function-paren-newline": "off",
     "import/no-unresolved": "off",
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "react/require-default-props": "off",
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }],
+    "no-return-assign": "off",
+    "no-confusing-arrow": "off",
+    "arrow-body-style": "off",
+    "no-unused-vars": "off",
+    "object-curly-newline": "off",
+    "max-len": "off"
   }
 }

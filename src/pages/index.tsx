@@ -1,5 +1,5 @@
-function Home() {
-  return <div>Home Page.</div>;
-}
+import Main from './main';
 
-export default Home;
+export default function Index() {
+  return <Main />;
+}
