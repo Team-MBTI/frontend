@@ -31,7 +31,7 @@ module.exports = (phase) => {
     async headers() {
       return [
         {
-          source: `${process.env.API_URL}`,
+          source: '/:path*',
           headers: [{ key: 'Access-Control-Allow-Credentials', value: 'true' }],
         },
       ];
