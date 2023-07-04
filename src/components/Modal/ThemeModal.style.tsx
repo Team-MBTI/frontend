@@ -1,20 +1,21 @@
+import { flexbox } from '@/styles/mixin';
+
 import styled from '@emotion/styled';
 
 export const ThemeModalBox = styled.div`
+  ${flexbox({ jc: 'center', ai: 'center' })};
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
 `;
 
 export const ThemeModalContainer = styled.div`
   position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   padding: 1rem;
   text-align: center;
   background-color: white;
@@ -24,8 +25,8 @@ export const ThemeModalContainer = styled.div`
 
 export const ThemeModalContent = styled.div`
   padding-top: 1rem;
-  width: 50rem;
-  height: 20rem;
+  width: 322px;
+  height: 184px;
   @media screen and (max-width: 70em) {
     width: 40rem;
     height: 15rem;
@@ -57,8 +58,5 @@ export const ThemeCloseBtn = styled.div`
   top: 0.625rem;
   right: 0.9rem;
   cursor: pointer;
-  > svg {
-    color: #fefefe;
-    border-radius: 0.313rem;
-  }
+  z-index: 99;
 `;

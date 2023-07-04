@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
 
 import Button from '@/components/common/Button';
+import ThemeModal from '@/components/Modal/ThemeModal';
+import { useGlobalModal } from '@/store/GlobalStore';
 import theme from '@/styles/theme';
 
 import { css } from '@emotion/react';
@@ -9,6 +11,10 @@ import * as S from './Main.style';
 
 export default function Main() {
   const router = useRouter();
+
+  const showModal = useGlobalModal((state) => state.showModal);
+  const toggleModal = useGlobalModal((state) => state.toggleModal);
+
   return (
     <S.MainWrapper>
       <S.Title>여행 스타일 테스트</S.Title>
@@ -43,10 +49,12 @@ export default function Main() {
           css={css`
             border: 1px solid black;
           `}
+          onClick={toggleModal}
         >
           <S.Text>공유하기</S.Text>
         </Button>
       </S.BottomWrapper>
+      {showModal && <ThemeModal clickModal={toggleModal} />}
     </S.MainWrapper>
   );
 }

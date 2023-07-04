@@ -15,7 +15,7 @@ import {
 } from './ThemeModal.style';
 
 type IThemeModal = {
-  clickModal: React.MouseEventHandler<HTMLDivElement>;
+  clickModal: () => void;
 };
 
 const ThemeModal = (props: IThemeModal) => {
@@ -25,6 +25,7 @@ const ThemeModal = (props: IThemeModal) => {
 
   const handleCopyClipBoard = (text: string) => {
     onCopy(text);
+    clickModal();
   };
 
   // 공유하기 버튼
@@ -33,21 +34,29 @@ const ThemeModal = (props: IThemeModal) => {
   const url = process.env.API_URL + router.pathname;
 
   return (
-    <ThemeModalBox onClick={clickModal}>
+    <>
+      <ThemeModalBox onClick={clickModal} />
       <ThemeModalContainer>
-        <ThemeCloseBtn onClick={clickModal}>X</ThemeCloseBtn>
+        <ThemeCloseBtn onClick={clickModal}>
+          <Image
+            src="/images/close.png"
+            alt="modal close image"
+            width={32}
+            height={32}
+          />
+        </ThemeCloseBtn>
         <ThemeModalContent>
           <ThemeModalItem>공유방식을 선택해주세요</ThemeModalItem>
           <ThemeModalItemContainer>
             <Image
-              src="/img/kakaoCopy.png"
+              src="/images/kakaoCopy.png"
               alt="CopyImage"
               width={50}
               height={70}
             />
             <Image
               onClick={() => handleCopyClipBoard(url)}
-              src="/img/linkCopy.png"
+              src="/images/linkCopy.png"
               alt="CopyImage"
               width={50}
               height={70}
@@ -55,7 +64,7 @@ const ThemeModal = (props: IThemeModal) => {
           </ThemeModalItemContainer>
         </ThemeModalContent>
       </ThemeModalContainer>
-    </ThemeModalBox>
+    </>
   );
 };
 
