@@ -22,10 +22,19 @@ module.exports = (phase) => {
 
   return {
     env: {
-      API_URL: process.env.API_URL,
+      API_URL: `${process.env.API_URL}`,
+      KAKAO_SHARE_KEY: process.env.NEXT_PUBLIC_KAKAO_SHARE_KEY,
     },
     images: {
       domains: ['m.media-amazon.com'],
+    },
+    async headers() {
+      return [
+        {
+          source: `${process.env.API_URL}`,
+          headers: [{ key: 'Access-Control-Allow-Credentials', value: 'true' }],
+        },
+      ];
     },
   };
 };
