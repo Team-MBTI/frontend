@@ -28,5 +28,13 @@ module.exports = (phase) => {
     images: {
       domains: ['m.media-amazon.com'],
     },
+    async headers() {
+      return [
+        {
+          source: `${process.env.API_URL}`,
+          headers: [{ key: 'Access-Control-Allow-Credentials', value: 'true' }],
+        },
+      ];
+    },
   };
 };
