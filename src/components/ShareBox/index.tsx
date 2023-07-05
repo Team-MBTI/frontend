@@ -28,11 +28,11 @@ const ShareBox = ({ handleCancleClick }: IShareBox) => {
   };
 
   const handleKakaoShare = () => {
-    console.log('kakao share clicked');
     const { Kakao, location } = window;
     Kakao.Link.sendScrap({
       requestUrl: location.href,
     });
+    handleCancleClick();
   };
 
   const url = process.env.API_URL + router.pathname;
