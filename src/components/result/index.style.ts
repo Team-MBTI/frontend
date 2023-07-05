@@ -4,18 +4,14 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   ${flexbox({ dir: 'column', jc: 'center', ai: 'center' })}
-
-  width: 100vw;
-  height: 100vh;
-  padding: 0 21px;
 `;
 
 export const ResultWrapper = styled.div`
   ${flexbox({ dir: 'column', jc: 'space-around', ai: 'center' })}
 
   width: 100%;
-  height: 60%;
-  padding: 10px 21px;
+  height: 100%;
+  padding: 37px 0 78px 0;
 
   background-color: white;
   border-radius: 15px;
@@ -43,10 +39,9 @@ export const SubText = styled.div`
 
 export const ButtonWrapper = styled.div`
   ${flexbox({ dir: 'column', jc: 'space-around', ai: 'center' })}
+  gap: 16px;
 
   width: 100%;
-  height: 30%;
-  margin: 20px;
 `;
 
 export const MoreInfoButton = styled.button`
