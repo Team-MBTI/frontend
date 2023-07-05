@@ -14,10 +14,11 @@ import {
   MoreInfoButton,
   ShareButton,
 } from '@/components/result/index.style';
+import ShareBox from '@/components/ShareBox';
 
 function Result() {
   const [showModal, setShowModal] = useState(false);
-  const clickModal = () => setShowModal(!showModal);
+  const toggleModal = () => setShowModal(!showModal);
 
   const router = useRouter();
 
@@ -37,8 +38,12 @@ function Result() {
         <MoreInfoButton onClick={() => router.push('/')}>
           여행지 소개로 이동하기
         </MoreInfoButton>
-        <ShareButton onClick={clickModal}>공유하기</ShareButton>
-        {showModal && <ThemeModal clickModal={clickModal} />}
+        <ShareButton onClick={toggleModal}>공유하기</ShareButton>
+        {showModal && (
+          <ThemeModal clickModal={toggleModal}>
+            <ShareBox handleCancleClick={toggleModal} />
+          </ThemeModal>
+        )}
         <Link href="/">로그인하고 다른 결과 둘러보기</Link>
       </ButtonWrapper>
     </Container>

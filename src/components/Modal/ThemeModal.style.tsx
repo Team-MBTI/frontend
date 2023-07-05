@@ -13,6 +13,9 @@ export const ThemeModalBox = styled.div`
 `;
 
 export const ThemeModalContainer = styled.div`
+  width: 322px;
+  height: 183px;
+  ${flexbox({ dir: 'column', jc: 'center', ai: 'center' })};
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -21,36 +24,6 @@ export const ThemeModalContainer = styled.div`
   background-color: white;
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.4);
-`;
-
-export const ThemeModalContent = styled.div`
-  padding-top: 1rem;
-  width: 322px;
-  height: 184px;
-  @media screen and (max-width: 70em) {
-    width: 40rem;
-    height: 15rem;
-  }
-  @media screen and (max-width: 50.5em) {
-    width: 20rem;
-    height: 9rem;
-  }
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-`;
-
-export const ThemeModalItem = styled.div`
-  font-size: 1.5rem;
-`;
-
-export const ThemeModalItemContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  place-items: center;
-  row-gap: 1.875rem;
-  padding: 0.5rem;
 `;
 
 export const ThemeCloseBtn = styled.div`

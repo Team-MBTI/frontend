@@ -49,18 +49,8 @@ export default function Login() {
     return 'success';
   };
 
-  const kakaoInit = () => {
-    const kakao = (window as any).Kakao;
-
-    if (!kakao.isInitialized()) {
-      kakao.init(process.env.KAKAO_SHARE_KEY);
-    }
-
-    return kakao;
-  };
-
   const kakaoLogin = () => {
-    const kakao = kakaoInit();
+    const kakao = (window as any).Kakao;
 
     kakao.Auth.authorize({
       redirectUri: `${process.env.API_URL}/auth/kakao/callback`,

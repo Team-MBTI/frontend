@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 
 import Button from '@/components/common/Button';
 import ThemeModal from '@/components/Modal/ThemeModal';
+import ShareBox from '@/components/ShareBox';
 import { useGlobalModal } from '@/store/GlobalStore';
 import theme from '@/styles/theme';
 
@@ -54,7 +55,11 @@ export default function Main() {
           <S.Text>공유하기</S.Text>
         </Button>
       </S.BottomWrapper>
-      {showModal && <ThemeModal clickModal={toggleModal} />}
+      {showModal && (
+        <ThemeModal clickModal={toggleModal}>
+          <ShareBox handleCancleClick={toggleModal} />
+        </ThemeModal>
+      )}
     </S.MainWrapper>
   );
 }
