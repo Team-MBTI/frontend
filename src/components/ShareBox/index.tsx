@@ -1,9 +1,6 @@
-import { useEffect, useState } from 'react';
-
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import useCopyClipBoard from '@/hooks/useCopyClipBoard';
 import { useToastMessage } from '@/store/GlobalStore';
 
 import * as S from './ShareBox.style';
@@ -14,9 +11,11 @@ interface IShareBox {
 
 const ShareBox = ({ handleCancleClick }: IShareBox) => {
   const router = useRouter();
+
   const setToastMessage = useToastMessage((state) => state.setToastMessage);
 
-  const handleCopyClipBoard = (text: string) => {
+  const handleCopyClipBoard = async (text: string) => {
+    await navigator.clipboard.writeText(text);
     handleCancleClick();
     setToastMessage({
       message: `${text} 링크가 복사되었어요. 공유하고 싶은 곳에 ‘붙여넣기’ 하세요!`,
