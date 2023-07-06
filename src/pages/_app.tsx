@@ -1,6 +1,7 @@
 import '../styles/reset.css';
 import { useEffect } from 'react';
 
+import axios from 'axios';
 import { AppProps } from 'next/app';
 
 import Layout from '@/components/common/Layout';
@@ -20,6 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(
     () => () => {
+      axios.defaults.withCredentials = true;
       if (server) {
         server.close();
       }
