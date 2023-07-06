@@ -14,7 +14,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "allowSyntheticDefaultImports": true,
-    "types": ["jest", "@testing-library/react", "@testing-library/jest-dom"],
+    "types": ["jest", "node"],
     "incremental": true,
     "baseUrl": "./src",
     "paths": {
@@ -24,7 +24,8 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "typeRoots": ["./node_modules/@types", "types"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "dist"]

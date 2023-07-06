@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { IPostMbtiResponse, ITravelQuestion } from '@/interfaces/travel';
+import { ITravelQuestion, IPostMbtiResponse } from '@/interfaces/travel';
 
 export const getMbtiList = async () => {
   const { data } = await axios.get(`${process.env.API_URL}/tests`);

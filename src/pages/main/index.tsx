@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { getMbtiList } from '@/apis/travel';
 import Button from '@/components/common/Button';
 import ThemeModal from '@/components/Modal/ThemeModal';
+import * as S from '@/components/Page/Main.style';
 import ShareBox from '@/components/ShareBox';
 import { useGlobalModal } from '@/store/GlobalStore';
 import theme from '@/styles/theme';
@@ -10,11 +11,9 @@ import theme from '@/styles/theme';
 import { css } from '@emotion/react';
 import { useQuery } from '@tanstack/react-query';
 
-import * as S from './Main.style';
-
 export default function Main() {
-  const { data: travelList, isLoading } = useQuery(['mbtiList'], getMbtiList);
   const router = useRouter();
+  const { data: travelList, isLoading } = useQuery(['mbtiList'], getMbtiList);
 
   const showModal = useGlobalModal((state) => state.showModal);
   const toggleModal = useGlobalModal((state) => state.toggleModal);
