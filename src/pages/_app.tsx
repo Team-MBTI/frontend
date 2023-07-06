@@ -2,6 +2,7 @@ import '../styles/reset.css';
 import { useEffect } from 'react';
 
 import { AppProps } from 'next/app';
+import Head from 'next/head';
 
 import Layout from '@/components/common/Layout';
 import ToastMessage from '@/components/common/ToastMessage';
@@ -28,15 +29,20 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 
   return (
-    <QueryProvider>
-      <ThemeProvider theme={{ mode: theme }}>
-        <ToastMessage />
-        <Global styles={{}} />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
-    </QueryProvider>
+    <>
+      <Head>
+        <script src="https://developers.kakao.com/sdk/js/kakao.min.js" defer />
+      </Head>
+      <QueryProvider>
+        <ThemeProvider theme={{ mode: theme }}>
+          <ToastMessage />
+          <Global styles={{}} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </QueryProvider>
+    </>
   );
 }
 

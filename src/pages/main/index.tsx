@@ -18,7 +18,7 @@ export default function Main() {
   const showModal = useGlobalModal((state) => state.showModal);
   const toggleModal = useGlobalModal((state) => state.toggleModal);
 
-  if (isLoading) return <div>Loading Component....</div>;
+  if (isLoading || !travelList) return <div>Loading Component....</div>;
 
   return (
     <S.MainWrapper>
