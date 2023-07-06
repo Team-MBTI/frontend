@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 
+import { getMbtiList } from '@/apis/travel';
 import Button from '@/components/common/Button';
 import ThemeModal from '@/components/Modal/ThemeModal';
 import ShareBox from '@/components/ShareBox';
@@ -7,18 +8,22 @@ import { useGlobalModal } from '@/store/GlobalStore';
 import theme from '@/styles/theme';
 
 import { css } from '@emotion/react';
+import { useQuery } from '@tanstack/react-query';
 
 import * as S from './Main.style';
 
 export default function Main() {
+  const { data: travelList, isLoading } = useQuery(['mbtiList'], getMbtiList);
   const router = useRouter();
 
   const showModal = useGlobalModal((state) => state.showModal);
   const toggleModal = useGlobalModal((state) => state.toggleModal);
 
+  if (isLoading) return <div>Loading Component....</div>;
+
   return (
     <S.MainWrapper>
-      <S.Title>여행 스타일 테스트</S.Title>
+      <S.Title>{travelList[0]?.name || '데이터 불러 오는 중....'}</S.Title>
       <S.Logo src="/images/logo.png" alt="logo image" />
       <S.Description>성향에 딱 맞는 여행지를 알려드려요!</S.Description>
       <S.LoginButtonWrapper>
@@ -38,7 +43,7 @@ export default function Main() {
           size="large"
           backgroundColor={theme.color.secondary}
           color="#fff"
-          onClick={() => router.push('/test/1')}
+          onClick={() => router.push(`/test/${travelList[0]?.id}`)}
         >
           <S.Text>로그인 없이 시작하기</S.Text>
         </Button>

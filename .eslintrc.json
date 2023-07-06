@@ -111,6 +111,7 @@
     "arrow-body-style": "off",
     "no-unused-vars": "off",
     "object-curly-newline": "off",
-    "max-len": "off"
+    "max-len": "off",
+    "consistent-return": "off"
   }
 }
