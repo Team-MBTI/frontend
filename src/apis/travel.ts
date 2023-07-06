@@ -34,7 +34,7 @@ export const postMbti = async ({
   answer: ITravelQuestion[];
 }) => {
   try {
-    const data: IPostMbtiResponse = await axios.post(
+    const data = await axios.post(
       `${process.env.API_URL}/tests/${testId}/submit`,
       {
         testId,
@@ -42,7 +42,7 @@ export const postMbti = async ({
       },
     );
 
-    if (data.status === 'created') {
+    if (data.status === 201) {
       return data.data;
     }
   } catch (err) {
