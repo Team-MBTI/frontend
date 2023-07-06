@@ -1,4 +1,5 @@
-import styled, { keyframes } from 'styled-components';
+import { keyframes } from '@emotion/react';
+import styled from '@emotion/styled';
 
 const move = keyframes`
   0% {
@@ -16,25 +17,31 @@ const move = keyframes`
   }
 `;
 
+const BoxWrapper = styled.div`
+  width: 100vw;
+  height: 100vh;
+`;
+
 const Box = styled.div<{ imageUrl: string }>`
   width: 240px;
   height: 240px;
   background-image: url(${(props) => props.imageUrl});
   background-size: 100% 100%;
-  //여기서부터는 animation과 연관 있음
+
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   opacity: 1;
   animation: ${move} 2s 1s infinite;
 `;
 
-const Loading = () => {
+const LoadingSpinner = () => {
   return (
-    <div className="App">
+    <BoxWrapper>
       <Box imageUrl="/images/logo.png" />
-    </div>
+    </BoxWrapper>
   );
 };
 
-export default Loading;
+export default LoadingSpinner;

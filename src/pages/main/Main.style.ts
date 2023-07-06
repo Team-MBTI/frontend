@@ -3,22 +3,20 @@ import { flexbox } from '@/styles/mixin';
 import styled from '@emotion/styled';
 
 export const MainWrapper = styled.section`
-  ${flexbox({ dir: 'column', ai: 'center' })};
+  ${flexbox({ dir: 'column', jc: 'center', ai: 'center' })};
+  gap: 16px;
   width: 100%;
-  height: 100%;
-  padding: 134px 0 78px 0;
+  height: 100vh;
 `;
 
 export const Title = styled.h1`
   color: #5344aa;
-  font-size: 22px;
-  font-family: NanumSquare Neo;
+  font-size: 28px;
   font-weight: 400;
 `;
 
 export const Text = styled.span`
   font-size: 18px;
-  font-family: Roboto;
   font-weight: 500;
   line-height: 22px;
   letter-spacing: 1.25px;
@@ -27,18 +25,15 @@ export const Text = styled.span`
 export const Logo = styled.img`
   width: 240px;
   height: 140px;
-  margin-top: 50px;
 `;
 
 export const Description = styled.span``;
 
-export const LoginButtonWrapper = styled.div`
-  margin-top: 27px;
-`;
+export const LoginButtonWrapper = styled.div``;
 
 export const BottomWrapper = styled.div`
   ${flexbox({ dir: 'column', jc: 'flex-end', ai: 'center' })};
-  margin-top: 120px;
+  margin-top: 80px;
   gap: 16px;
 `;
 

@@ -25,13 +25,14 @@ interface IUseMbtiTest {
   ) => void;
   mbtiQuestions: IQuestion[];
   handleQuestionsSubmit: () => void;
+  isLoading: boolean;
 }
 
 export const useMbtiTest = (
   questionRef: RefObject<HTMLDivElement[]>,
   testId: number,
 ): IUseMbtiTest => {
-  const { data: mbtiQuestions } = useQuery(['mbtiTest'], () =>
+  const { data: mbtiQuestions, isLoading } = useQuery(['mbtiTest'], () =>
     getMbtiById(testId),
   );
   const router = useRouter();
@@ -102,6 +103,7 @@ export const useMbtiTest = (
   }, []);
 
   return {
+    isLoading,
     currentStep,
     mbtiQuestions,
     handleQuestionsSubmit,
