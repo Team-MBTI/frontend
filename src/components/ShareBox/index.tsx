@@ -14,12 +14,9 @@ interface IShareBox {
 
 const ShareBox = ({ handleCancleClick }: IShareBox) => {
   const router = useRouter();
-  const [isCopy, setIsCopy] = useCopyClipBoard();
-  const [copyText, setCopyText] = useState('');
   const setToastMessage = useToastMessage((state) => state.setToastMessage);
 
   const handleCopyClipBoard = (text: string) => {
-    setCopyText(text);
     handleCancleClick();
     setToastMessage({
       message: `${text} 링크가 복사되었어요. 공유하고 싶은 곳에 ‘붙여넣기’ 하세요!`,
