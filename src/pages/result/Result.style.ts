@@ -81,3 +81,5 @@ export const ResultMore = styled.div`
   margin-top: 10px;
   text-decoration: underline;
 `;
+
+export default function ResultStyle() {}
