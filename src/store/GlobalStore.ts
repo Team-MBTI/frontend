@@ -7,6 +7,11 @@ interface GlobalStoreState {
   toggleTheme: () => void;
 }
 
+interface GlobalModalState {
+  showModal: boolean;
+  toggleModal: () => void;
+}
+
 export const GlobalStore = create<GlobalStoreState>((set) => ({
   theme: 'dark',
   toggleTheme: () =>
@@ -29,4 +34,9 @@ export const useToastMessage = create<IToastMessage>((set) => ({
     type: 'success',
   },
   setToastMessage: (toast) => set(() => ({ toast })),
+}));
+
+export const useGlobalModal = create<GlobalModalState>((set) => ({
+  showModal: false,
+  toggleModal: () => set((state) => ({ showModal: !state.showModal })),
 }));

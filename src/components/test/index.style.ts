@@ -19,7 +19,7 @@ export const Question = styled.div<Props>`
   width: 100%;
   height: 100%;
   ${flexbox({ dir: 'column' })}
-  gap: 10px;
+  gap: 16px;
   margin-top: 20vh;
   margin-bottom: 20vh;
   scroll-snap-align: center;
@@ -36,12 +36,17 @@ export const Question = styled.div<Props>`
   }
 `;
 
+export const CardWrapper = styled.div`
+  ${flexbox({})};
+  gap: 12px;
+`;
+
 export const Card = styled.button<Props>`
   width: 164px;
   height: 123px;
   padding: 10px;
   background-color: #fff;
-  ${flexbox({ dir: 'column', jc: 'space-around', ai: 'center' })}
+  ${flexbox({ jc: 'space-around', ai: 'center' })}
   border-radius: 30px;
   border: 1px solid
     ${(props) => (props.isActive ? '#D9D8DC' : 'rgba(0,0,0,0.1)')};

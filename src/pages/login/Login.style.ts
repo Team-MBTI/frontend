@@ -3,12 +3,12 @@ import { flexbox } from '@/styles/mixin';
 import styled from '@emotion/styled';
 
 export const LoginWrapper = styled.section`
-  ${flexbox({ dir: 'column', ai: 'center' })};
-  padding: 57px 0 90px 0;
+  ${flexbox({ dir: 'column', jc: 'center', ai: 'center' })};
+  height: 100vh;
 `;
 
 export const Form = styled.form`
-  margin-top: 158px;
+  margin-top: 100px;
 `;
 
 export const InputWrapper = styled.div`
@@ -27,6 +27,7 @@ export const BottomWrapper = styled.div`
 `;
 
 export const Title = styled.h1`
+  font-size: 32px;
   font-weight: 400;
   line-height: 20px;
   letter-spacing: 0.15px;
