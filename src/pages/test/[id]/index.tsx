@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import Button from '@/components/common/Button';
+import LoadingSpinner from '@/components/common/LoadingSpinner';
 import ProgressBar from '@/components/common/ProgressBar';
 import * as S from '@/components/test/index.style';
 import { questionNums } from '@/constants/mbti';
@@ -20,7 +21,10 @@ function Index() {
     moveToNextQuestion,
     handleQuestionsSubmit,
     mbtiQuestions,
+    isLoading,
   } = useMbtiTest(questionRef, +router.query.id);
+
+  if (isLoading) return <LoadingSpinner />;
 
   return (
     <S.Section>

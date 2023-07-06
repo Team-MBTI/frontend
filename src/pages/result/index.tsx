@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import LoadingSpinner from '@/components/common/LoadingSpinner';
 import ThemeModal from '@/components/Modal/ThemeModal';
 import ShareBox from '@/components/ShareBox';
 
@@ -16,6 +16,8 @@ function Result() {
   const router = useRouter();
 
   const { resultId, destinationImgUrl, destinationName, mbti } = router.query;
+
+  if (!resultId) return <LoadingSpinner />;
 
   return (
     <S.Container data-id={resultId}>

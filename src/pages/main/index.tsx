@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 
 import { getMbtiList } from '@/apis/travel';
 import Button from '@/components/common/Button';
+import LoadingSpinner from '@/components/common/LoadingSpinner';
 import ThemeModal from '@/components/Modal/ThemeModal';
 import ShareBox from '@/components/ShareBox';
 import { useGlobalModal } from '@/store/GlobalStore';
@@ -19,7 +20,7 @@ export default function Main() {
   const showModal = useGlobalModal((state) => state.showModal);
   const toggleModal = useGlobalModal((state) => state.toggleModal);
 
-  if (isLoading) return <div>Loading Component....</div>;
+  if (isLoading) return <LoadingSpinner />;
 
   return (
     <S.MainWrapper>
