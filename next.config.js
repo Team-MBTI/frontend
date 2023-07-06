@@ -26,7 +26,7 @@ module.exports = (phase) => {
       KAKAO_SHARE_KEY: process.env.NEXT_PUBLIC_KAKAO_SHARE_KEY,
     },
     images: {
-      domains: ['m.media-amazon.com'],
+      domains: ['kr.object.ncloudstorage.com'],
     },
     async headers() {
       return [
